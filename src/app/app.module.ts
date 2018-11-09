@@ -1,6 +1,9 @@
+import { ErrorHandlerInterceptor } from './shared/interceptor/errorhandler.interceptor';
+import { NotificationInterceptor } from './shared/interceptor/notification.interceptor';
+import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -35,9 +38,27 @@ export function HttpLoaderFactory(http: HttpClient) {
       positionClass: 'toast-top-center',
       messageClass: 'toast-msg',
       timeOut: 3000
-    }),
+    })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NotificationInterceptor,
+      multi: true,
+      deps: [Injector]
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerInterceptor,
+      multi: true,
+      deps: [Injector]
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

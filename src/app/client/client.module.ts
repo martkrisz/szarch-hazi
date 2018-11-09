@@ -5,11 +5,16 @@ import { ClientRegisterComponent } from './client-register/client-register.compo
 import { SearchReservationComponent } from './search-reservation/search-reservation.component';
 import { MakeReservationComponent } from './make-reservation/make-reservation.component';
 import { ClientProfileComponent } from './client-profile/client-profile.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [ClientLoginComponent, ClientRegisterComponent, SearchReservationComponent, MakeReservationComponent, ClientProfileComponent]
+  imports: [CommonModule, SharedModule],
+  declarations: [
+    ClientLoginComponent,
+    ClientRegisterComponent,
+    SearchReservationComponent,
+    MakeReservationComponent,
+    ClientProfileComponent
+  ]
 })
-export class ClientModule { }
+export class ClientModule {}
