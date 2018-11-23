@@ -1,5 +1,5 @@
+import { ClientRoutingModule } from './client-routing.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ClientLoginComponent } from './client-login/client-login.component';
 import { ClientRegisterComponent } from './client-register/client-register.component';
 import { SearchReservationComponent } from './search-reservation/search-reservation.component';
@@ -8,7 +8,7 @@ import { ClientProfileComponent } from './client-profile/client-profile.componen
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [CommonModule, SharedModule],
+  imports: [ClientRoutingModule, SharedModule],
   declarations: [
     ClientLoginComponent,
     ClientRegisterComponent,

@@ -1,16 +1,15 @@
+import { LoginDto } from './../../models/loginDto';
 import { AuthService } from './../../shared/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginDto } from './../../models/models';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-client-login',
-  templateUrl: './client-login.component.html',
-  styleUrls: ['./client-login.component.scss']
+  selector: 'app-waiter-login',
+  templateUrl: './waiter-login.component.html',
+  styleUrls: ['./waiter-login.component.scss']
 })
-export class ClientLoginComponent implements OnInit {
-
+export class WaiterLoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
@@ -20,15 +19,14 @@ export class ClientLoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login() {
     const { emailFormControl, passwordFormControl } = this.loginForm.value;
     const loginDto: LoginDto = { email: emailFormControl, password: passwordFormControl };
     this.authService.login(loginDto).subscribe(result => {
       if (result === true) {
-        this.router.navigate(['client/menu']);
+        this.router.navigate(['/waiter/reservations']);
       }
     });
   }

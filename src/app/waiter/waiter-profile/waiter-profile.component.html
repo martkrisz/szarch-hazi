@@ -1,3 +1,21 @@
-<p>
-  waiter-profile works!
-</p>
+<form [formGroup]="profileForm">
+  <mat-form-field>
+    <input matInput [placeholder]="'form.placeholder.email' | translate" formControlName="emailFormControl">
+    <mat-error *ngIf="profileForm.get('emailFormControl').hasError('required')" translate>
+      form.error.required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [placeholder]="'form.placeholder.password' | translate" formControlName="passwordFormControl" type="password">
+    <mat-error *ngIf="profileForm.get('passwordFormControl').hasError('required')" translate>
+      form.error.required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [placeholder]="'form.placeholder.name' | translate" formControlName="nameFormControl">
+    <mat-error *ngIf="profileForm.get('nameFormControl').hasError('required')" translate>
+      form.error.required
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button [disabled]="profileForm.invalid" (click)="editProfile()" translate>form.editProfile</button>
+</form>

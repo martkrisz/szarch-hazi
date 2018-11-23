@@ -1,3 +1,21 @@
-<p>
-  register-waiter works!
-</p>
+<form [formGroup]="registerForm">
+  <mat-form-field>
+    <input matInput [placeholder]="'form.placeholder.email' | translate" formControlName="emailFormControl">
+    <mat-error *ngIf="registerForm.get('emailFormControl').hasError('required')" translate>
+      form.error.required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [placeholder]="'form.placeholder.password' | translate" formControlName="passwordFormControl" type="password">
+    <mat-error *ngIf="registerForm.get('passwordFormControl').hasError('required')" translate>
+      form.error.required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [placeholder]="'form.placeholder.name' | translate" formControlName="nameFormControl">
+    <mat-error *ngIf="registerForm.get('nameFormControl').hasError('required')" translate>
+      form.error.required
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button [disabled]="registerForm.invalid" (click)="register()" translate>admin.registerWaiter</button>
+</form>

@@ -1,3 +1,4 @@
+import { JwtModule } from '@auth0/angular-jwt';
 import { ErrorHandlerInterceptor } from './shared/interceptor/errorhandler.interceptor';
 import { NotificationInterceptor } from './shared/interceptor/notification.interceptor';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
@@ -12,6 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -19,7 +21,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       positionClass: 'toast-top-center',
       messageClass: 'toast-msg',
       timeOut: 3000
-    })
+    }),
+    JwtModule
   ],
   providers: [
     {

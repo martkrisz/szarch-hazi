@@ -1,10 +1,19 @@
+import { WaitersComponent } from './waiters/waiters.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'login'
+  },
+  { path: 'login', component: AdminLoginComponent },
+  { path: 'waiters', component: WaitersComponent }
+];
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: []
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class AdminRoutingModule { }

@@ -1,3 +1,7 @@
-<p>
-  waiters works!
-</p>
+<div *ngIf="waiters">
+  <div *ngFor="let waiter of waiters">
+    <span>{{waiter.name}}</span>
+    <span>{{waiter.email}}</span>
+    <button mat-raised-button (click)="deleteWaiter(waiter.id)"><span translate>admin.deleteWaiter</span></button>
+  </div>
+</div>

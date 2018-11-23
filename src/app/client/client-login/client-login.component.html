@@ -1,3 +1,16 @@
-<p>
-  client-login works!
-</p>
+<form [formGroup]="loginForm">
+  <mat-form-field>
+    <input matInput [placeholder]="'form.placeholder.email' | translate" formControlName="emailFormControl">
+    <mat-error *ngIf="loginForm.get('emailFormControl').hasError('required')" translate>
+      form.error.required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [placeholder]="'form.placeholder.password' | translate" formControlName="passwordFormControl" type="password">
+    <mat-error *ngIf="loginForm.get('passwordFormControl').hasError('required')" translate>
+      form.error.required
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button [disabled]="loginForm.invalid" (click)="login()"><span translate>form.login</span></button>
+  <button mat-raised-button [routerLink]="['/client/register']" routerLinkActive="router-link-active"><span translate>form.register</span></button>
+</form>

@@ -1,3 +1,5 @@
+import { UserDto } from './../../models/models';
+import { AdminService } from './../admin.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WaitersComponent implements OnInit {
 
-  constructor() { }
+  waiters: UserDto[];
+
+  constructor(private adminService: AdminService) { }
 
   ngOnInit() {
+    this.getWaiters();
+  }
+
+  getWaiters() {
+    this.adminService.getWaiters().subscribe(waiters => this.waiters);
+  }
+
+  deleteWaiter(id: string) {
+    this.adminService.deleteWaiter(id).subscribe(() => {
+      this.getWaiters();
+    });
   }
 
 }

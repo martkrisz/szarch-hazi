@@ -1,3 +1,4 @@
+import { UserDto } from './../models/userDto';
 import { LoginDto } from './../models/loginDto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -102,6 +103,20 @@ export class AuthService {
         }
       })
     );
+  }
+
+  register(userDto: UserDto): Observable<any> {
+    const body = JSON.stringify(userDto);
+    return this.http.post(`${environment.backendBaseUrl}/api/user`, body);
+  }
+
+  getProfile(): Observable<UserDto> {
+    return this.http.get<UserDto>(`${environment.backendBaseUrl}/api/user`);
+  }
+
+  editProfile(userDto: UserDto): Observable<any> {
+    const body = JSON.stringify(userDto);
+    return this.http.put(`${environment.backendBaseUrl}/api/user`, body);
   }
 
   logout() {

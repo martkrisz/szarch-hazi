@@ -1,0 +1,20 @@
+{
+  "form": {
+    "placeholder": {
+      "email": "E-mail cím",
+      "password": "Jelszó",
+      "name": "Név",
+      "address": "Cím"
+    },
+    "error": {
+      "required": "Kötelező Mező"
+    },
+    "login": "Bejelentkezés",
+    "register": "Regisztráció",
+    "editProfile": "Profil mentése"
+  },
+  "admin": {
+    "deleteWaiter": "Pincér törlése",
+    "registerWaiter": "Pincér regisztrálása"
+  }
+}
