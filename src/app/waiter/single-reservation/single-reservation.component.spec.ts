@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchReservationComponent } from './search-reservation.component';
+import { SingleReservationComponent } from './single-reservation.component';
 
-describe('SearchReservationComponent', () => {
-  let component: SearchReservationComponent;
-  let fixture: ComponentFixture<SearchReservationComponent>;
+describe('SingleReservationComponent', () => {
+  let component: SingleReservationComponent;
+  let fixture: ComponentFixture<SingleReservationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchReservationComponent ]
+      declarations: [ SingleReservationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchReservationComponent);
+    fixture = TestBed.createComponent(SingleReservationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

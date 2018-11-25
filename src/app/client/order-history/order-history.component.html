@@ -1,0 +1,6 @@
+<div *ngFor="let order of orders">
+  <div>{{order.time}}</div>
+  <div>{{order.sum}}</div>
+  <div>{{order.status}}</div>
+  <star-rating [starType]="'svg'" [rating]="0" (ratingChange)="onClick($event, order.id)"></star-rating>
+</div>

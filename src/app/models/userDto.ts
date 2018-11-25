@@ -17,4 +17,5 @@ export interface UserDto {
     password?: string;
     address?: string;
     id?: string;
+    loyaltyPoints?: number;
 }

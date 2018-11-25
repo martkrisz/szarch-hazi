@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: row;
+}
+
+.cart {
+  flex: 1;
+}
+
+.menu {
+  flex: 2;
+}

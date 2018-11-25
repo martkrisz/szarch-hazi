@@ -19,4 +19,8 @@ export class NavbarComponent implements OnInit {
     this.waiterLoggedIn = this.authService.isLoggedInAsWaiterAsObservable();
     this.adminLoggedIn = this.authService.isLoggedInAsAdminAsObservable();
   }
+
+  logout() {
+    this.authService.logout();
+  }
 }

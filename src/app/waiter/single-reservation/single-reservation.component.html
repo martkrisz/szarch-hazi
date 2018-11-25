@@ -1,0 +1,7 @@
+<span>{{reservation.tableId}}</span>
+<span>{{reservation.time}}</span>
+<span>{{reservation.duration}}</span>
+<span>{{reservation.personNumber}}</span>
+<button mat-raised-button color="primary" (click)="routeToModify()" routerLinkActive="router-link-active"  translate>waiter.modifyReservation</button>
+<button *ngIf="reservation.status === 'PENDING'" mat-raised-button color="primary" translate (click)="confirmReservation()">waiter.confirmReservation</button>
+<button mat-raised-button color="warm" translate (click)="deleteReservation()">waiter.deleteReservation</button>

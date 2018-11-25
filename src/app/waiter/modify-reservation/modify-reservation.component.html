@@ -1,0 +1,27 @@
+<form [formGroup]="modifyForm">
+    <mat-form-field>
+      <input matInput [placeholder]="'form.placeholder.table' | translate" formControlName="tableFormControl">
+      <mat-error *ngIf="modifyForm.get('personFormControl').hasError('required')" translate>
+        form.error.required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [owlDateTime]="datePicker" name="date" formControlName="dateFormControl">
+      <span [owlDateTimeTrigger]="datePicker"></span>
+      <owl-date-time #datePicker></owl-date-time>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [placeholder]="'form.placeholder.person' | translate" formControlName="personFormControl">
+      <mat-error *ngIf="modifyForm.get('personFormControl').hasError('required')" translate>
+        form.error.required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [placeholder]="'form.placeholder.duration' | translate" formControlName="durationFormControl">
+      <mat-error *ngIf="modifyForm.get('durationFormControl').hasError('required')" translate>
+        form.error.required
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button (click)="modifyReservation()">form.modifyReservation</button>
+  </form>
+  

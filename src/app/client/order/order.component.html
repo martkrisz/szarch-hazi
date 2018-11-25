@@ -1,0 +1,20 @@
+<div class="cart">
+  <div *ngFor="let cartItem of cart">
+    <span>{{cartItem.menuItemId}}</span>
+    <span>{{cartItem.amount}}</span>
+    <button mat-raised-button color="primary" translate (click)="updateCart(menuItem, true)" translate>client.addItem</button>
+    <button mat-raised-button color="warn" translate (click)="updateCart(menuItem, false)" translate>client.removeItemItem</button>
+  </div>
+  <div *ngIf="cart.length">
+    <mat-checkbox class="example-margin" [(ngModel)]="discountFlag" translate [translateParams]="{discount: discount}">client.discount</mat-checkbox>
+    <button mat-raised-button color="primary" translate>client.order</button>
+  </div>
+  <div *ngIf="!cart.length" translate>client.emptyCart</div>
+</div>
+<div class="menu">
+  <div *ngFor="let menuItem of menu">
+    <span>{{menuItem.name}}</span>
+    <span>{{menuItem.price}}</span>
+    <button mat-raised-button color="primary" translate (click)="updateCart(menuItem, false)">client.addItem</button>
+  </div>
+</div>

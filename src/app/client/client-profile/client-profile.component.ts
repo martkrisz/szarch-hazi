@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ClientProfileComponent implements OnInit {
   profileForm: FormGroup;
+  loyaltyPoints: number;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.profileForm = this.fb.group({
@@ -26,6 +27,7 @@ export class ClientProfileComponent implements OnInit {
       this.profileForm.get('nameFormControl').setValue(profile.name);
       this.profileForm.get('addressFormControl').setValue(profile.address);
       this.profileForm.get('emailFormControl').disable();
+      this.loyaltyPoints = profile.loyaltyPoints;
     });
   }
 

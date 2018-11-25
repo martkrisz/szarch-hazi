@@ -1,3 +1,2 @@
-<p>
-  reservations works!
-</p>
+<button mat-raised-button translate [routerLink]="['/waiter/new-reservation']" routerLinkActive="router-link-active" >waiter.newReservation</button>
+<app-single-reservation *ngFor="let reservation of reservations" [reservation]="reservation"></app-single-reservation>

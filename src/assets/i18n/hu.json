@@ -4,7 +4,10 @@
       "email": "E-mail cím",
       "password": "Jelszó",
       "name": "Név",
-      "address": "Cím"
+      "address": "Cím",
+      "search": "Asztalfoglalás keresése",
+      "newReservation": "Új asztalfoglalás",
+      "modifyReservation": "Asztalfoglalás módosítása"
     },
     "error": {
       "required": "Kötelező Mező"
@@ -16,5 +19,40 @@
   "admin": {
     "deleteWaiter": "Pincér törlése",
     "registerWaiter": "Pincér regisztrálása"
+  },
+  "client": {
+    "deleteReservation": "Asztalfoglalás törlése",
+    "noReservation": "Jelenleg nincsenek asztalfoglalások",
+    "order": "Rendelés leadása",
+    "emptyCart": "A kosár üres",
+    "discount": "Önnek jelenleg {{discount}} hűségpontja van. Fel kívánja használni?"
+  },
+  "waiter": {
+    "deleteReservation": "Asztalfoglalás törlése",
+    "modifyReservation": "Asztalfoglalás módosítása",
+    "newReservation": "Új asztalfoglalás",
+    "confirmReservation": "Asztalfoglalás megerősítése"
+  },
+  "navbar": {
+    "admin": {
+      "registerWaiter":"Pincér regisztrálása",
+      "waiters": "Pincérek",
+      "profile": "Profil"
+    },
+    "client": {
+      "profile": "Profil",
+      "order": "Rendelés",
+      "orderHistory": "Eddigi rendelések",
+      "makeReservation": "Asztalfoglalás",
+      "reservations": "Asztalfoglalásaim"
+    },
+    "waiter": {
+      "profile": "Profil",
+      "reservations": "Foglalások"
+    },
+    "logout": "Kijelentkezés"
+  },
+  "error": {
+    "fallback": "Váratlan hiba történt"
   }
 }

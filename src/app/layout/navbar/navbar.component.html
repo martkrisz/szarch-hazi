@@ -1,3 +1,24 @@
-<div *ngIf="(clientLoggedIn | async)"></div>
-<div *ngIf="(waiterLoggedIn | async)"></div>
-<div *ngIf="(adminLoggedIn | async)"></div>
+<div *ngIf="(clientLoggedIn | async)">
+  <button mat-button color="primary" [routerLink]="['/client/profile']" routerLinkActive="router-link-active" translate>navbar.client.profile</button>
+  <button mat-button color="primary" [routerLink]="['/client/order']" routerLinkActive="router-link-active" translate>navbar.client.order</button>
+  <button mat-button color="primary" [routerLink]="['/client/make-reservation']" routerLinkActive="router-link-active"
+    translate>navbar.client.makeReservation</button>
+  <button mat-button color="primary" [routerLink]="['/client/my-reservations']" routerLinkActive="router-link-active"
+    translate>navbar.client.reservations</button>
+  <button mat-button color="primary" [routerLink]="['/client/order-history']" routerLinkActive="router-link-active"
+    translate>navbar.client.orderHistory</button>
+  <button mat-button color="primary" (click)="logout()" translate>navbar.logout</button>
+</div>
+<div *ngIf="(waiterLoggedIn | async)">
+  <button mat-button color="primary" [routerLink]="['/waiter/profile']" routerLinkActive="router-link-active" translate>navbar.waiter.profile</button>
+  <button mat-button color="primary" [routerLink]="['/waiter/reservations']" routerLinkActive="router-link-active"
+    translate>navbar.waiter.reservations</button>
+  <button mat-button color="primary" [routerLink]="['/waiter/orders']" routerLinkActive="router-link-active" translate>navbar.waiter.orders</button>
+  <button mat-button color="primary" (click)="logout()" translate>navbar.logout</button>
+</div>
+<div *ngIf="(adminLoggedIn | async)">
+  <button mat-button color="primary" [routerLink]="['/admin/register-waiter']" routerLinkActive="router-link-active"
+    translate>navbar.admin.registerWaiter</button>
+  <button mat-button color="primary" [routerLink]="['/admin/waiters']" routerLinkActive="router-link-active" translate>navbar.admin.waiters</button>
+  <button mat-button color="primary" (click)="logout()" translate>navbar.logout</button>
+</div>
