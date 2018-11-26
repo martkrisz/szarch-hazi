@@ -1,8 +1,7 @@
 <form [formGroup]="searchForm">
   <mat-form-field>
-    <input matInput [owlDateTime]="datePicker" name="date" formControlName="dateFormControl">
-    <span [owlDateTimeTrigger]="datePicker"></span>
-    <owl-date-time #datePicker></owl-date-time>
+    <input matInput [owlDateTime]="picker" [owlDateTimeTrigger]="picker" formControlName="dateFormControl" [placeholder]="'form.placeholder.time' | translate" readonly>
+    <owl-date-time #picker></owl-date-time>
   </mat-form-field>
   <mat-form-field>
     <input matInput [placeholder]="'form.placeholder.person' | translate" formControlName="personFormControl">
@@ -16,12 +15,12 @@
       form.error.required
     </mat-error>
   </mat-form-field>
-  <button mat-raised-button (click)="search()">form.search</button>
+  <button class="form-button" mat-raised-button color="primary" [disabled]="!searchForm.valid" (click)="search()"><span translate>form.search</span></button>
 </form>
-<div *ngIf="results.length">
-  <div *ngFor="let result of results">
-    <span>{{result.tableId}}</span>
-    <span>{{result.seats}}</span>
-    <button mat-raised-button translate (click)="makeReservation(result.tableId)">form.makeReservation</button>
+<div *ngIf="isSearched">
+  <span class="results-title" translate>client.searchResults</span>
+  <div *ngFor="let result of results" class="result">
+    <span translate [translateParams]="{seats: result.seats}">client.seats</span>
+    <button mat-raised-button color="primary" (click)="makeReservation(result.tableId)"><span translate>form.makeReservation</span></button>
   </div>
 </div>

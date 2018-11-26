@@ -28,7 +28,7 @@ export class ClientLoginComponent implements OnInit {
     const loginDto: LoginDto = { email: emailFormControl, password: passwordFormControl };
     this.authService.login(loginDto).subscribe(result => {
       if (result === true) {
-        this.router.navigate(['client/menu']);
+        this.router.navigate(['client/order']);
       }
     });
   }

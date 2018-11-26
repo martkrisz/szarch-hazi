@@ -8,20 +8,19 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class WaiterService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getReservations(): Observable<ReservationDto[]> {
     return this.http.get<ReservationDto[]>(`${environment.backendBaseUrl}/waiter/reservation`);
   }
 
   makeReservation(reservationDto: ReservationDto): Observable<any> {
-    const body = JSON.stringify({ reservationDto });
+    const body = JSON.stringify(reservationDto);
     return this.http.post(`${environment.backendBaseUrl}/waiter/reservation`, body);
   }
 
   editReservation(reservationDto: ReservationDto): Observable<any> {
-    const body = JSON.stringify({ reservationDto });
+    const body = JSON.stringify( reservationDto );
     return this.http.put(`${environment.backendBaseUrl}/waiter/reservation`, body);
   }
 
@@ -34,16 +33,23 @@ export class WaiterService {
   }
 
   getOrderByTable(talbeId: string): Observable<OrderDto> {
-    return this.http.get<OrderDto>(`${environment.backendBaseUrl}/waiter/order-by-table/${talbeId}`);
+    return this.http.get<OrderDto>(
+      `${environment.backendBaseUrl}/waiter/order-by-table/${talbeId}`
+    );
   }
 
   modifyOrderByTable(tableId: string, orderDto: OrderDto): Observable<any> {
-    const body = JSON.stringify({ orderDto });
-    return this.http.put<OrderDto>(`${environment.backendBaseUrl}/waiter/order-by-table/${tableId}`, body);
+    const body = JSON.stringify( orderDto );
+    return this.http.put<OrderDto>(
+      `${environment.backendBaseUrl}/waiter/order-by-table/${tableId}`,
+      body
+    );
   }
 
   getOrderById(orderId: string): Observable<OrderDto> {
-    return this.http.get<OrderDto>(`${environment.backendBaseUrl}/waiter/order-by-table/${orderId}`);
+    return this.http.get<OrderDto>(
+      `${environment.backendBaseUrl}/waiter/order-by-table/${orderId}`
+    );
   }
 
   deleteOrderById(orderId: string): Observable<any> {
@@ -51,10 +57,15 @@ export class WaiterService {
   }
 
   finishOrder(orderId: string): Observable<any> {
-    return this.http.post<OrderDto>(`${environment.backendBaseUrl}/waiter/order-by-table/${orderId}/finish`, null);
+    return this.http.post<OrderDto>(
+      `${environment.backendBaseUrl}/waiter/order-by-table/${orderId}/finish`,
+      null
+    );
   }
 
   getReceipt(orderId: string): Observable<any> {
-    return this.http.get<any>(`${environment.backendBaseUrl}/waiter/order-by-table/${orderId}/receipt`);
+    return this.http.get<any>(
+      `${environment.backendBaseUrl}/waiter/order-by-table/${orderId}/receipt`
+    );
   }
 }

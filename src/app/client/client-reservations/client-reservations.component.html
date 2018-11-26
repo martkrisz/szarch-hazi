@@ -1,10 +1,10 @@
 <div *ngIf="reservations.length">
-  <div *ngFor="let reservation of reservations">
-    <span>{{reservation.time}}</span>
+  <div *ngFor="let reservation of reservations" class="reservation">
+    <span>{{reservation.time | date: 'short'}}</span>
     <span>{{reservation.duration}}</span>
     <span>{{reservation.status}}</span>
     <span>{{reservation.personNumber}}</span>
-    <button mat-raised-button color="warn" (click)="deleteReservation(reservation.id)">client.deleteReservation</button>
+    <button mat-raised-button color="warn" (click)="deleteReservation(reservation.reservationId)"><span translate>client.deleteReservation</span></button>
   </div>
 </div>
-<div *ngIf="!reservations.length">client.noReservations</div>
+<div *ngIf="!reservations.length" translate>client.noReservations</div>

@@ -11,5 +11,5 @@
       form.error.required
     </mat-error>
   </mat-form-field>
-  <button mat-raised-button [disabled]="loginForm.invalid"><span translate>form.login</span></button>
+  <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="login()"><span translate>form.login</span></button>
 </form>

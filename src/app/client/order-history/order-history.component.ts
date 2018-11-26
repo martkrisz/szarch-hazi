@@ -13,7 +13,7 @@ export class OrderHistoryComponent implements OnInit {
   constructor(private clientService: ClientService) { }
 
   ngOnInit() {
-    this.clientService.getOrders().subscribe(orders => this.orders);
+    this.clientService.getOrders().subscribe(orders => this.orders = orders);
   }
 
   onClick($event, orderId: string) {

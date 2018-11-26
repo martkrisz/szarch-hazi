@@ -1,6 +1,7 @@
-<div *ngFor="let order of orders">
-  <div>{{order.time}}</div>
-  <div>{{order.sum}}</div>
-  <div>{{order.status}}</div>
-  <star-rating [starType]="'svg'" [rating]="0" (ratingChange)="onClick($event, order.id)"></star-rating>
+<div *ngIf="!orders.length" translate>client.noOrders</div>
+<div *ngFor="let order of orders; let i = index;" class="order">
+  <span>{{order.time | date: 'short'}}</span>
+  <span>{{order.sum}}</span>
+  <span>{{order.status}}</span>
+  <star-rating [starType]="'svg'" [rating]="orders[i].rating" (ratingChange)="onClick($event, order.orderId)"></star-rating>
 </div>

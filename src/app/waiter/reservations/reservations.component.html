@@ -1,2 +1,5 @@
-<button mat-raised-button translate [routerLink]="['/waiter/new-reservation']" routerLinkActive="router-link-active" >waiter.newReservation</button>
-<app-single-reservation *ngFor="let reservation of reservations" [reservation]="reservation"></app-single-reservation>
+<div>
+  <button mat-raised-button color="primary" [routerLink]="['/waiter/new-reservation']" routerLinkActive="router-link-active"
+    class="new-reservation"><span translate>waiter.newReservation</span></button>
+</div>
+<app-single-reservation *ngFor="let reservation of reservations" [reservation]="reservation" (emitter)="getReservations()"></app-single-reservation>

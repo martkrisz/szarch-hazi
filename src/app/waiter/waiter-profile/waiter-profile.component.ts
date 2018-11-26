@@ -2,6 +2,7 @@ import { AuthService } from './../../shared/auth.service';
 import { UserDto } from './../../models/userDto';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-waiter-profile',
@@ -12,7 +13,7 @@ export class WaiterProfileComponent implements OnInit {
 
   profileForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.profileForm = this.fb.group({
       emailFormControl: ['', [Validators.required, Validators.email]],
       passwordFormControl: ['', Validators.required],
@@ -34,9 +35,10 @@ export class WaiterProfileComponent implements OnInit {
     const userDto: UserDto = {
       email: emailFormControl,
       password: passwordFormControl,
-      name: nameFormControl
+      name: nameFormControl,
+      address: 'Waiters have no address'
     };
-    this.authService.editProfile(userDto).subscribe();
+    this.authService.editProfile(userDto).subscribe(() => this.router.navigate(['waiter/reservations']));
   }
 
 }

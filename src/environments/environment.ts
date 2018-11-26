@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendBaseUrl: ''
+  backendBaseUrl: 'http://tomi936.sch.bme.hu:3000'
 };
 
 /*

@@ -9,3 +9,18 @@
   height: 100px;
   background: $szarhazi-red;
 }
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  
+  &--waiter, &--admin {
+    width: 30%;
+  }
+
+  &--client {
+    width: 50%;
+  }
+}

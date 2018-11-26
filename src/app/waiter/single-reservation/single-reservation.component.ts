@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ReservationDto } from '../../models/models';
 import { WaiterService } from '../waiter.service';
 import { Router } from '@angular/router';
@@ -10,18 +10,23 @@ import { Router } from '@angular/router';
 })
 export class SingleReservationComponent implements OnInit {
   @Input() reservation: ReservationDto;
+  @Output() emitter: EventEmitter<boolean>;
 
-  constructor(private waiterService: WaiterService, private router: Router) {}
+  constructor(private waiterService: WaiterService, private router: Router) {
+    this.emitter = new EventEmitter<boolean>();
+  }
 
   ngOnInit() {}
 
   confirmReservation() {
-    this.reservation.status = 'CONFIRMED';
+    this.reservation.status = 'Confirmed';
     this.waiterService.editReservation(this.reservation).subscribe();
   }
 
   deleteReservation() {
-    this.waiterService.deleteReservation(this.reservation.reservationId).subscribe();
+    this.waiterService.deleteReservation(this.reservation.reservationId).subscribe(() => {
+      this.emitter.emit(true);
+    });
   }
 
   routeToModify() {

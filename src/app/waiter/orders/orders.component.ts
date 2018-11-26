@@ -14,7 +14,7 @@ export class OrdersComponent implements OnInit {
   constructor(private waiterService: WaiterService) { }
 
   ngOnInit() {
-    this.waiterService.getOrders().subscribe(orders => this.orders);
+    this.waiterService.getOrders().subscribe(orders => this.orders = orders);
   }
 
 }

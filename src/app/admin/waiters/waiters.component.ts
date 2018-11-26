@@ -18,7 +18,7 @@ export class WaitersComponent implements OnInit {
   }
 
   getWaiters() {
-    this.adminService.getWaiters().subscribe(waiters => this.waiters);
+    this.adminService.getWaiters().subscribe(waiters => this.waiters = waiters);
   }
 
   deleteWaiter(id: string) {

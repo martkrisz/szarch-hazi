@@ -11,6 +11,6 @@
       form.error.required
     </mat-error>
   </mat-form-field>
-  <button mat-raised-button [disabled]="loginForm.invalid" (click)="login()"><span translate>form.login</span></button>
-  <button mat-raised-button [routerLink]="['/client/register']" routerLinkActive="router-link-active"><span translate>form.register</span></button>
+  <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="login()"><span translate>form.login</span></button>
+  <button mat-raised-button color="primary" [routerLink]="['/client/register']" routerLinkActive="router-link-active"><span translate>form.register</span></button>
 </form>

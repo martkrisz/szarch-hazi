@@ -6,8 +6,7 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [owlDateTime]="datePicker" name="date" formControlName="dateFormControl">
-      <span [owlDateTimeTrigger]="datePicker"></span>
+      <input matInput [owlDateTime]="datePicker" [owlDateTimeTrigger]="datePicker" [placeholder]="'form.placeholder.time' | translate" formControlName="dateFormControl" readonly>
       <owl-date-time #datePicker></owl-date-time>
     </mat-form-field>
     <mat-form-field>
@@ -22,6 +21,6 @@
         form.error.required
       </mat-error>
     </mat-form-field>
-    <button mat-raised-button (click)="modifyReservation()">form.modifyReservation</button>
+    <button mat-raised-button color="primary" (click)="modifyReservation()"><span translate>form.modifyReservation</span></button>
   </form>
   

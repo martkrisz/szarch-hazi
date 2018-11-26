@@ -6,6 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 const helper = new JwtHelperService();
 
@@ -17,7 +18,7 @@ export class AuthService {
   private loggedInAsWaiter: BehaviorSubject<boolean>;
   private loggedInAsAdmin: BehaviorSubject<boolean>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.loggedInAsClient = new BehaviorSubject<boolean>(this.isLoggedInAsClient());
     this.loggedInAsWaiter = new BehaviorSubject<boolean>(this.isLoggedInAsWaiter());
     this.loggedInAsAdmin = new BehaviorSubject<boolean>(this.isLoggedInAsAdmin());
@@ -64,30 +65,30 @@ export class AuthService {
 
   login(loginDto: LoginDto): Observable<Boolean> {
     const body = JSON.stringify({
-      user: loginDto.email,
-      pass: loginDto.password
+      email: loginDto.email,
+      password: loginDto.password
     });
-    return this.http.post(`${environment.backendBaseUrl}/api/user/login`, body).pipe(
+    return this.http.post(`${environment.backendBaseUrl}/user/login`, body).pipe(
       map((response: any) => {
         const token = response.jwt;
         if (token) {
           const role = helper.decodeToken(token).role;
           switch (role) {
-            case 'CLIENT':
+            case 0:
               localStorage.setItem('clientEmail', JSON.stringify({ user: loginDto.email }));
               localStorage.setItem('clientToken', JSON.stringify({ token: token }));
               this.loggedInAsClient.next(true);
               this.loggedInAsWaiter.next(false);
               this.loggedInAsAdmin.next(false);
               break;
-            case 'WAITER':
+            case 1:
               localStorage.setItem('waiterEmail', JSON.stringify({ user: loginDto.email }));
               localStorage.setItem('waiterToken', JSON.stringify({ token: token }));
               this.loggedInAsClient.next(false);
               this.loggedInAsWaiter.next(true);
               this.loggedInAsAdmin.next(false);
               break;
-            case 'ADMIN':
+            case 2:
               localStorage.setItem('adminEmail', JSON.stringify({ user: loginDto.email }));
               localStorage.setItem('adminToken', JSON.stringify({ token: token }));
               this.loggedInAsClient.next(false);
@@ -107,16 +108,16 @@ export class AuthService {
 
   register(userDto: UserDto): Observable<any> {
     const body = JSON.stringify(userDto);
-    return this.http.post(`${environment.backendBaseUrl}/api/user`, body);
+    return this.http.post(`${environment.backendBaseUrl}/user/register`, body);
   }
 
   getProfile(): Observable<UserDto> {
-    return this.http.get<UserDto>(`${environment.backendBaseUrl}/api/user`);
+    return this.http.get<UserDto>(`${environment.backendBaseUrl}/user`);
   }
 
   editProfile(userDto: UserDto): Observable<any> {
     const body = JSON.stringify(userDto);
-    return this.http.put(`${environment.backendBaseUrl}/api/user`, body);
+    return this.http.put(`${environment.backendBaseUrl}/user`, body);
   }
 
   logout() {
@@ -124,5 +125,6 @@ export class AuthService {
     this.loggedInAsWaiter.next(false);
     this.loggedInAsAdmin.next(false);
     localStorage.clear();
+    this.router.navigate(['']);
   }
 }

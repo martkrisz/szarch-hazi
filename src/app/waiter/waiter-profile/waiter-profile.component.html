@@ -6,16 +6,16 @@
     </mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput [placeholder]="'form.placeholder.password' | translate" formControlName="passwordFormControl" type="password">
-    <mat-error *ngIf="profileForm.get('passwordFormControl').hasError('required')" translate>
-      form.error.required
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field>
     <input matInput [placeholder]="'form.placeholder.name' | translate" formControlName="nameFormControl">
     <mat-error *ngIf="profileForm.get('nameFormControl').hasError('required')" translate>
       form.error.required
     </mat-error>
   </mat-form-field>
-  <button mat-raised-button [disabled]="profileForm.invalid" (click)="editProfile()" translate>form.editProfile</button>
+  <mat-form-field>
+    <input matInput [placeholder]="'form.placeholder.password' | translate" formControlName="passwordFormControl" type="password">
+    <mat-error *ngIf="profileForm.get('passwordFormControl').hasError('required')" translate>
+      form.error.required
+    </mat-error>
+  </mat-form-field>
+  <button class="save-button" mat-raised-button color="primary" [disabled]="profileForm.invalid" (click)="editProfile()"><span translate>form.editProfile</span></button>
 </form>

@@ -1,3 +1,11 @@
-<div *ngIf="orders">
-  <div *ngFor="let order of orders"></div>
+<div *ngIf="orders" class="orders">
+  <div *ngFor="let order of orders" class="order">
+    <span>{{order.address}}</span>
+    <span>{{order.ownerName}}</span>
+    <span>{{order.status}}</span>
+    <span>{{order.time | date: 'short'}}</span>
+    <span>{{order.sum}}</span>
+    <span>{{order.rating}}</span>
+    <span>{{order.type}}</span>
+  </div>
 </div>

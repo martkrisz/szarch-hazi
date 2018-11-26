@@ -14,7 +14,10 @@ export class ReservationsComponent implements OnInit {
   constructor(private waiterService: WaiterService) { }
 
   ngOnInit() {
-    this.waiterService.getReservations().subscribe(reservations => this.reservations);
+    this.getReservations();
   }
 
+  getReservations() {
+    this.waiterService.getReservations().subscribe(reservations => this.reservations = reservations);
+  }
 }

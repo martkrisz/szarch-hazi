@@ -15,4 +15,5 @@ export interface CartItemDto {
     menuItemId: string;
     amount: number;
     isAdd?: boolean;
+    name?: string;
 }

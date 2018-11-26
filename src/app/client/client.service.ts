@@ -1,6 +1,6 @@
 import { environment } from './../../environments/environment';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ReservationDto, OrderDto, RatingDto, MenuItemDto, CartItemDto } from '../models/models';
 
@@ -18,17 +18,15 @@ export class ClientService {
   }
 
   searchForTable(time: Date, person: number, duration: number): Observable<any[]> {
-    const params = new HttpParams();
-    params.append('time', time.toString());
-    params.append('person', person.toString());
-    params.append('duration', duration.toString());
-    return this.http.get<any[]>(`${environment.backendBaseUrl}/client/searchForTable`, {
-      params: params
-    });
+    return this.http.get<any[]>(
+      `${
+        environment.backendBaseUrl
+      }/client/searchForTable?time=${time.valueOf()}&person=${person}&duration=${duration}`
+    );
   }
 
   makeReservation(reservationDto: ReservationDto): Observable<any> {
-    const body = JSON.stringify({ reservationDto });
+    const body = JSON.stringify(reservationDto);
     return this.http.post(`${environment.backendBaseUrl}/client/reservation`, body);
   }
 
@@ -41,6 +39,9 @@ export class ClientService {
   }
 
   createOrder(cart, discount): Observable<any> {
+    cart = cart.map(item => {
+      return { menuItemId: item.menuItemId, amount: item.amount };
+    });
     const body = JSON.stringify({ cart, discount });
     return this.http.post(`${environment.backendBaseUrl}/client/order`, body);
   }
@@ -50,7 +51,7 @@ export class ClientService {
   }
 
   rate(ratingDto: RatingDto): Observable<any> {
-    const body = JSON.stringify({ ratingDto });
+    const body = JSON.stringify(ratingDto);
     return this.http.post(`${environment.backendBaseUrl}/client/rate`, body);
   }
 
@@ -65,9 +66,16 @@ export class ClientService {
   }
 
   updateCart(cart: CartItemDto[]) {
-    const body = JSON.stringify({ cart });
+    cart = cart.map(item => {
+      return { menuItemId: item.menuItemId, amount: item.amount };
+    });
+    const body = JSON.stringify(cart);
     this.http
       .put<CartItemDto[]>(`${environment.backendBaseUrl}/client/cart`, body)
       .subscribe(updatedCart => this.cartSource.next(updatedCart));
+  }
+
+  clearCart() {
+    this.cartSource.next([]);
   }
 }

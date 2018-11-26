@@ -2,6 +2,7 @@ import { AuthService } from './../../shared/auth.service';
 import { UserDto } from './../../models/models';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-profile',
@@ -12,7 +13,7 @@ export class ClientProfileComponent implements OnInit {
   profileForm: FormGroup;
   loyaltyPoints: number;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.profileForm = this.fb.group({
       emailFormControl: ['', [Validators.required, Validators.email]],
       passwordFormControl: ['', Validators.required],
@@ -39,6 +40,8 @@ export class ClientProfileComponent implements OnInit {
       name: nameFormControl,
       address: addressFormControl
     };
-    this.authService.editProfile(userDto).subscribe();
+    this.authService.editProfile(userDto).subscribe(() => {
+      this.router.navigate(['client/order']);
+    });
   }
 }

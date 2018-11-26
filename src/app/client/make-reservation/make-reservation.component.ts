@@ -16,12 +16,14 @@ export class MakeReservationComponent implements OnInit {
   constructor(private clientService: ClientService, private fb: FormBuilder) {
     this.searchForm = this.fb.group({
       dateFormControl: ['', Validators.required],
-      durationFormControl: ['', [Validators.required, Validators.max(240)]],
+      durationFormControl: ['', [Validators.required, Validators.max(5)]],
       personFormControl: ['', [Validators.required, Validators.max(10), Validators.min(1)]]
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.searchForm.get('dateFormControl').setValue(new Date());
+  }
 
   search() {
     const { dateFormControl, personFormControl, durationFormControl } = this.searchForm.value;
@@ -29,6 +31,7 @@ export class MakeReservationComponent implements OnInit {
       .searchForTable(dateFormControl, personFormControl, durationFormControl)
       .subscribe(results => {
         this.results = results;
+        console.log(this.results);
         this.isSearched = true;
       });
   }
@@ -41,6 +44,8 @@ export class MakeReservationComponent implements OnInit {
       personNumber: personFormControl,
       duration: durationFormControl
     };
-    this.clientService.makeReservation(reservation).subscribe();
+    this.clientService.makeReservation(reservation).subscribe(() => {
+      this.isSearched = false;
+    });
   }
 }

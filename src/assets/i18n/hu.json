@@ -5,16 +5,20 @@
       "password": "Jelszó",
       "name": "Név",
       "address": "Cím",
-      "search": "Asztalfoglalás keresése",
-      "newReservation": "Új asztalfoglalás",
-      "modifyReservation": "Asztalfoglalás módosítása"
+      "person": "Hány fő?",
+      "duration": "Időtartam (óra)",
+      "time": "Időpont",
+      "table": "Asztal sorszáma"
     },
     "error": {
       "required": "Kötelező Mező"
     },
     "login": "Bejelentkezés",
     "register": "Regisztráció",
-    "editProfile": "Profil mentése"
+    "editProfile": "Profil mentése",
+    "search": "Asztalfoglalás keresése",
+    "makeReservation": "Új asztalfoglalás",
+    "modifyReservation": "Asztalfoglalás módosítása"
   },
   "admin": {
     "deleteWaiter": "Pincér törlése",
@@ -22,10 +26,16 @@
   },
   "client": {
     "deleteReservation": "Asztalfoglalás törlése",
-    "noReservation": "Jelenleg nincsenek asztalfoglalások",
+    "noReservations": "Jelenleg nincsenek asztalfoglalások",
     "order": "Rendelés leadása",
     "emptyCart": "A kosár üres",
-    "discount": "Önnek jelenleg {{discount}} hűségpontja van. Fel kívánja használni?"
+    "discount": "Önnek jelenleg {{discount}} hűségpontja van. Fel kívánja használni?",
+    "addItem": "+",
+    "removeItem": "-",
+    "loyaltyPoints": "Önnek jelenleg {{loyaltyPoints}} hűségpontja van.",
+    "noOrders": "Nincsenek előző rendelések.",
+    "seats": "Férőhelyek száma: {{seats}}",
+    "searchResults": "Találatok"
   },
   "waiter": {
     "deleteReservation": "Asztalfoglalás törlése",
@@ -35,7 +45,7 @@
   },
   "navbar": {
     "admin": {
-      "registerWaiter":"Pincér regisztrálása",
+      "registerWaiter": "Pincér regisztrálása",
       "waiters": "Pincérek",
       "profile": "Profil"
     },
@@ -48,11 +58,16 @@
     },
     "waiter": {
       "profile": "Profil",
-      "reservations": "Foglalások"
+      "reservations": "Foglalások",
+      "orders": "Rendelések"
     },
     "logout": "Kijelentkezés"
   },
   "error": {
     "fallback": "Váratlan hiba történt"
+  },
+  "POST.api.client": {
+    "searchForTable": "Sikeres keresés!",
+    "reservation": "Sikeres asztalfoglalás!"
   }
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="profileForm">
+<form [formGroup]="profileForm" class="profile-form">
   <mat-form-field>
     <input matInput [placeholder]="'form.placeholder.email' | translate" formControlName="emailFormControl">
     <mat-error *ngIf="profileForm.get('emailFormControl').hasError('required')" translate>
@@ -23,6 +23,6 @@
       form.error.required
     </mat-error>
   </mat-form-field>
-  <span>{{loyaltyPoints}}</span>
-  <button mat-raised-button [disabled]="profileForm.invalid" (click)="editProfile()" translate>form.editProfile</button>
+  <span translate [translateParams]="{loyaltyPoints: loyaltyPoints}">client.loyaltyPoints</span>
+  <button mat-raised-button color="primary" [disabled]="profileForm.invalid" (click)="editProfile()"><span translate>form.editProfile</span></button>
 </form>

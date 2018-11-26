@@ -5,8 +5,64 @@
 
 .cart {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 32px 20px 32px 20px;
+  border-bottom: 5px solid red;
+
+  .cart-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    min-width: 200px;
+
+    span {
+      min-width: 200px;
+      text-align: center;
+    }
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .bottom-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    :nth-child(2), :nth-child(3) {
+      margin-top: 24px;
+    }
+  }
 }
 
 .menu {
   flex: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 20px 32px 20px;
+  border-left: 5px solid red;
+  border-bottom: 5px solid red;
+
+  .menu-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+
+    .name {
+      width: 100px;
+    }
+  }
 }

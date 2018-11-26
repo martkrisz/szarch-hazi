@@ -13,10 +13,14 @@ export class ClientReservationsComponent implements OnInit {
   constructor(private clientService: ClientService) { }
 
   ngOnInit() {
-    this.clientService.getReservations().subscribe(reservations => this.reservations);
+    this.getReservations();
   }
 
   deleteReservation(reservationId: string) {
-    this.clientService.deleteReservation(reservationId).subscribe();
+    this.clientService.deleteReservation(reservationId).subscribe(this.getReservations);
+  }
+
+  getReservations = () => {
+    this.clientService.getReservations().subscribe(reservations => this.reservations = reservations);
   }
 }

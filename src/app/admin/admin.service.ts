@@ -8,15 +8,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdminService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getWaiters(): Observable<UserDto[]> {
     return this.http.get<UserDto[]>(`${environment.backendBaseUrl}/admin/waiter`);
   }
 
   registerWaiter(waiter: UserDto): Observable<any> {
-    const body = JSON.stringify({ waiter });
+    const body = JSON.stringify(waiter);
     return this.http.post(`${environment.backendBaseUrl}/admin/waiter`, body);
   }
 

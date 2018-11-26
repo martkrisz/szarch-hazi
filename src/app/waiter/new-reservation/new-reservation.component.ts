@@ -18,14 +18,16 @@ export class NewReservationComponent implements OnInit {
     private router: Router
   ) {
     this.searchForm = this.fb.group({
-      tableFormControl: ['', Validators.required],
+      tableFormControl: ['', [Validators.required, Validators.min(0), Validators.max(5)]],
       dateFormControl: ['', Validators.required],
-      durationFormControl: ['', [Validators.required, Validators.max(240)]],
+      durationFormControl: ['', [Validators.required, Validators.max(4), Validators.min(1)]],
       personFormControl: ['', [Validators.required, Validators.max(10), Validators.min(1)]]
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.searchForm.get('dateFormControl').setValue(new Date);
+  }
 
   makeReservation() {
     const {

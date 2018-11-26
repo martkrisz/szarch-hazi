@@ -22,7 +22,7 @@ export class ModifyReservationComponent implements OnInit {
     this.modifyForm = this.fb.group({
       tableFormControl: ['', Validators.required],
       dateFormControl: ['', Validators.required],
-      durationFormControl: ['', [Validators.required, Validators.max(240)]],
+      durationFormControl: ['', [Validators.required, Validators.max(4)]],
       personFormControl: ['', [Validators.required, Validators.max(10), Validators.min(1)]]
     });
   }
@@ -31,7 +31,7 @@ export class ModifyReservationComponent implements OnInit {
     this.waiterService.getReservations().subscribe(reservations => {
       this.route.params.subscribe(params => {
         this.reservation = reservations.find(
-          reservation => reservation.reservationId === params['reservationID']
+          reservation => reservation.reservationId === params['reservationId']
         );
         this.modifyForm.get('tableFormControl').setValue(this.reservation.tableId);
         this.modifyForm.get('dateFormControl').setValue(this.reservation.time);
